@@ -1,8 +1,9 @@
 import 'dart:math';
 
-
 import 'package:agroscan/Screens/HomePage.dart';
 import 'package:agroscan/Screens/LoginScreen.dart';
+import 'package:agroscan/firebase.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -21,8 +22,9 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     FirebaseAuth auth = FirebaseAuth.instance;
 
-    String email = "", password = "",name='';
-    String phoneno;
+    String email = "", password = "";
+        String pnumber = "", name = "";
+
     bool _success = false;
     Future _register(email, pass) async {
       User? user = (await auth.createUserWithEmailAndPassword(
@@ -105,7 +107,10 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                       ),
                     ),
-                    Padding(
+
+                    SizedBox(
+                      height: 20,
+                    ),Padding(
                       padding: EdgeInsets.all(8.0),
                       child: GlassContainer(
                         linearGradient: const LinearGradient(
@@ -113,15 +118,19 @@ class _SignupScreenState extends State<SignupScreen> {
                         blur: 1.05,
                         child: Padding(
                           padding: const EdgeInsets.all(8),
-                          child: TextField(keyboardType: TextInputType.phone,
+                          child: TextField(
                             onChanged: (String value) {
-                              phoneno = value;
+                              pnumber = value;
                             },
                             decoration: const InputDecoration(
                                 fillColor: Colors.white, hintText: "Phone Number"),
                           ),
                         ),
                       ),
+                    ),
+
+                    SizedBox(
+                      height: 20,
                     ),
                     Padding(
                       padding: EdgeInsets.all(8.0),
@@ -141,6 +150,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                       ),
                     ),
+
                     SizedBox(
                       height: 20,
                     ),
@@ -162,6 +172,9 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
 
                     SizedBox(
                       height: 75,
@@ -173,6 +186,8 @@ class _SignupScreenState extends State<SignupScreen> {
                           padding: EdgeInsets.all(8),
                           child: InkWell(
                               onTap: () async {
+                              await   firebaseefunc.adduser(name, pnumber);
+
                                 await _register(email, password);
                                 if (_success != false) {
                                   Navigator.of(context).pushAndRemoveUntil(
@@ -218,7 +233,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
               ),
             )
-       
+  
             ),
       ),
     );

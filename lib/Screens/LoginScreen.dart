@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:agroscan/Screens/HomePage.dart';
 import 'package:agroscan/Screens/SignupScreen.dart';
+import 'package:agroscan/firebase.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -15,6 +18,14 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  var data;
+  @override
+  void initState() {
+    data = firebaseefunc.getdata();
+
+    super.initState();
+  }
+
   bool _success = false;
   FirebaseAuth auth = FirebaseAuth.instance;
   Future _login(email, pass) async {
@@ -130,10 +141,16 @@ class _LoginState extends State<Login> {
                                 await _login(email, password)
                                     .onError((error, stackTrace) => () {});
                                 if (_success != false) {
+                                  print("data");
+                                  // print(data[0].name);
+                                  // var name11 = data[0].name;
+
                                   await Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Home()));
+                                          builder: (context) => Home(
+                                              // data: data[0],
+                                              )));
                                 }
                               },
                               child: Padding(
