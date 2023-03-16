@@ -1,8 +1,8 @@
 class DataM {
-  final String plant;
-  final String image;
-  final String model;
-  final String lable;
+  late final String plant;
+  late final String image;
+  late final String model;
+ late final String lable;
 
   DataM({
     required this.plant,

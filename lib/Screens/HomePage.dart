@@ -1,5 +1,6 @@
 import 'package:agroscan/Screens/prediction.dart';
 import 'package:agroscan/firebase.dart';
+import 'package:agroscan/model/datam.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -65,10 +66,11 @@ class _HomeState extends State<Home> {
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
                               onTap: () {
+                                DataM data=DataM(plant: 'Sugercane', image: 'assets/sugercane.jpeg', model: 'assets/sugercane.tflite', lable: 'assets/sugercane.txt');
                                 Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => predictionScreen()));
+                                          builder: (context) => predictionScreen(data: data,)));
                               },
                               child: const CircleAvatar(
                                 radius: 35,
@@ -81,7 +83,13 @@ class _HomeState extends State<Home> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                DataM data=DataM(plant: 'Corn', image: 'assets/corn.jpg', model: 'assets/corn.tflite', lable: 'assets/corn.txt');
+                                Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => predictionScreen(data: data,)));
+                              },
                               child: const CircleAvatar(
                                 radius: 35,
                                 backgroundImage: AssetImage(
@@ -93,7 +101,13 @@ class _HomeState extends State<Home> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                DataM data=DataM(plant: 'Potato', image: 'assets/potato.jpg', model: 'assets/potato.tflite', lable: 'assets/potato.txt');
+                                Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => predictionScreen(data: data,)));
+                              },
                               child: const CircleAvatar(
                                 radius: 35,
                                 backgroundImage: AssetImage(
@@ -105,11 +119,17 @@ class _HomeState extends State<Home> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                DataM data=DataM(plant: 'Soya', image: 'assets/soya.jpg', model: 'assets/soya.tflite', lable: 'assets/soya.txt');
+                                Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => predictionScreen(data: data,)));
+                              },
                               child: const CircleAvatar(
                                 radius: 35,
                                 backgroundImage: AssetImage(
-                                  'assets/sugercane.jpeg',
+                                  'assets/soya.jpg',
                                 ),
                               ),
                             ),
@@ -125,7 +145,13 @@ class _HomeState extends State<Home> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                DataM data=DataM(plant: 'apple', image: 'assets/apple.jpg', model: 'assets/apple.tflite', lable: 'assets/apple.txt');
+                                Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => predictionScreen(data: data,)));
+                              },
                               child: const CircleAvatar(
                                 radius: 35,
                                 backgroundImage: AssetImage(
@@ -137,7 +163,13 @@ class _HomeState extends State<Home> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                DataM data=DataM(plant: 'grapes', image: 'assets/grapes.jpg', model: 'assets/grapes.tflite', lable: 'assets/grapes.txt');
+                                Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => predictionScreen(data: data,)));
+                              },
                               child: const CircleAvatar(
                                 radius: 35,
                                 backgroundImage: AssetImage(
@@ -161,7 +193,13 @@ class _HomeState extends State<Home> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                DataM data=DataM(plant: 'tomato', image: 'assets/tomato.jpg', model: 'assets/tomato.tflite', lable: 'assets/tomato.txt');
+                                Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => predictionScreen(data: data,)));
+                              },
                               child: const CircleAvatar(
                                 radius: 35,
                                 backgroundImage: AssetImage(
@@ -181,7 +219,13 @@ class _HomeState extends State<Home> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                 DataM data=DataM(plant: 'rice', image: 'assets/rice.jpg', model: 'assets/rice.tflite', lable: 'assets/rice.txt');
+                                Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => predictionScreen(data: data,)));
+                              },
                               child: const CircleAvatar(
                                 radius: 35,
                                 backgroundImage: AssetImage(
@@ -193,7 +237,13 @@ class _HomeState extends State<Home> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                DataM data=DataM(plant: 'wheat', image: 'assets/weet.jpg', model: 'assets/wheat.tflite', lable: 'assets/wheat.txt');
+                                Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => predictionScreen(data: data,)));
+                              },
                               child: const CircleAvatar(
                                 radius: 35,
                                 backgroundImage: AssetImage(

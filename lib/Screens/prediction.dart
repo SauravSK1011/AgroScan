@@ -7,9 +7,11 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
 
-class predictionScreen extends StatefulWidget {
-  predictionScreen({super.key, });
+import '../model/datam.dart';
 
+class predictionScreen extends StatefulWidget {
+  predictionScreen({super.key, required this.data});
+  late DataM data;
   @override
   State<predictionScreen> createState() => _predictionScreenState();
 }
@@ -30,8 +32,7 @@ class _predictionScreenState extends State<predictionScreen> {
   late String label;
 
   loadmodal() async {
-    await Tflite.loadModel(
-        model: 'assets/model_unquant.tflite', labels: 'assets/labels.txt');
+    await Tflite.loadModel(model: widget.data.model, labels: widget.data.lable);
   }
 
   _imageformgallery() async {
@@ -62,7 +63,7 @@ class _predictionScreenState extends State<predictionScreen> {
           ? _pridiction[0]["label"].toString().substring(2).toUpperCase()
           : "Retry";
       confidence = _pridiction[0]["confidence"] != null
-          ? (_pridiction[0]["confidence"]*100).toString().substring(0,5)
+          ? (_pridiction[0]["confidence"] * 100).toString().substring(0, 5)
           : 0;
       load = true;
       load = true;
@@ -118,11 +119,10 @@ class _predictionScreenState extends State<predictionScreen> {
             const SizedBox(
               height: 25,
             ),
-           
-             CircleAvatar(
+            CircleAvatar(
               radius: 75,
               backgroundImage: AssetImage(
-               'assets/sugercane.jpeg',
+                widget.data.image,
               ),
             ),
             const SizedBox(
@@ -218,7 +218,7 @@ class _predictionScreenState extends State<predictionScreen> {
                     ),
                   )
                 : Text(""),
-              load
+            load
                 ? Center(
                     child: Text(
                       confidence.toString(),
@@ -229,7 +229,30 @@ class _predictionScreenState extends State<predictionScreen> {
             SizedBox(
               height: 20,
             ),
-            
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Result(
+                              confidence: confidence,
+                              result: label,image: _imagefile,
+                            )));
+              },
+              child: Card(
+                elevation: 30,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(40),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Text(
+                    "detailed report",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ),
           ]),
         ),
       ),
