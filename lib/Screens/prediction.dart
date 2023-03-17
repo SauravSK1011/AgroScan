@@ -4,6 +4,7 @@ import 'package:agroscan/Screens/ResultScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:google_language_fonts/google_language_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
 
@@ -60,7 +61,7 @@ class _predictionScreenState extends State<predictionScreen> {
     setState(() {
       _pridiction = pridection!;
       label = _pridiction[0]["label"] != null
-          ? _pridiction[0]["label"].toString().substring(2).toUpperCase()
+          ? _pridiction[0]["label"].toString().substring(2)
           : "Retry";
       confidence = _pridiction[0]["confidence"] != null
           ? (_pridiction[0]["confidence"] * 100).toString().substring(0, 5)
@@ -109,13 +110,21 @@ class _predictionScreenState extends State<predictionScreen> {
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              "Predict Disease",
-              style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87),
-            ),
+            widget.data.lang == 'English'
+                ? const Text(
+                    "Predict Disease",
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87),
+                  )
+                : Text(
+                    "रोगाचा अंदाज लावा",
+                    style: DevanagariFonts.hind(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
             const SizedBox(
               height: 25,
             ),
@@ -151,13 +160,21 @@ class _predictionScreenState extends State<predictionScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    "Capture Image",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                ),
+                child: Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: widget.data.lang == 'English'
+                        ? Text(
+                            "Capture Image",
+                            style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold),
+                          )
+                        : Text(
+                            "फोटो काढा",
+                            style: DevanagariFonts.hind(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )),
               ),
             ),
             const SizedBox(
@@ -172,12 +189,21 @@ class _predictionScreenState extends State<predictionScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40),
                 ),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    "Take Image From Gallary",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
+                  child: widget.data.lang == 'English'
+                      ? Text(
+                          "Take Image From Gallary",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        )
+                      : Text(
+                          "गॅलरीमधून फोटो घ्या",
+                          style: DevanagariFonts.hind(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                 ),
               ),
             ),
@@ -201,12 +227,21 @@ class _predictionScreenState extends State<predictionScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40),
                 ),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    "Predict",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
+                  child: widget.data.lang == 'English'
+                      ? Text(
+                          "Predict",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        )
+                      : Text(
+                          "आजार ओळखा",
+                          style: DevanagariFonts.hind(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                 ),
               ),
             ),
@@ -236,7 +271,8 @@ class _predictionScreenState extends State<predictionScreen> {
                     MaterialPageRoute(
                         builder: (context) => Result(
                               confidence: confidence,
-                              result: label,image: _imagefile,
+                              result: label,
+                              image: _imagefile,
                             )));
               },
               child: Card(
@@ -244,12 +280,21 @@ class _predictionScreenState extends State<predictionScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40),
                 ),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    "detailed report",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
+                  child: widget.data.lang == 'English'
+                      ? Text(
+                          "Detailed Report",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        )
+                      : Text(
+                          "सविस्तर अहवाल",
+                          style: DevanagariFonts.hind(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                 ),
               ),
             ),

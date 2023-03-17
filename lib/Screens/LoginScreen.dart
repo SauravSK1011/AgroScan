@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:agroscan/Screens/HomePage.dart';
 import 'package:agroscan/Screens/SignupScreen.dart';
+import 'package:agroscan/Screens/lang.dart';
 import 'package:agroscan/firebase.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -148,7 +149,7 @@ class _LoginState extends State<Login> {
                                   await Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Home(
+                                          builder: (context) => Lang(
                                               // data: data[0],
                                               )));
                                 }

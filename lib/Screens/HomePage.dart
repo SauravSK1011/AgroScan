@@ -4,10 +4,11 @@ import 'package:agroscan/model/datam.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:google_language_fonts/google_language_fonts.dart';
 
 class Home extends StatefulWidget {
-  Home({super.key});
-
+  Home({super.key,required this.lang});
+late String lang;
   @override
   State<Home> createState() => _HomeState();
 }
@@ -48,6 +49,13 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 50,
               ),
+              widget.lang=="English"? Text(
+              'Welcome',
+              style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)
+            ):Text(
+              'नमस्कार',
+              style: DevanagariFonts.hind(fontSize: 25,fontWeight: FontWeight.bold),
+            ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
@@ -66,7 +74,7 @@ class _HomeState extends State<Home> {
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
                               onTap: () {
-                                DataM data=DataM(plant: 'Sugercane', image: 'assets/sugercane.jpeg', model: 'assets/sugercane.tflite', lable: 'assets/sugercane.txt');
+                                DataM data=DataM(plant: 'Sugercane', image: 'assets/sugercane.jpeg', model: 'assets/sugercane.tflite', lable: 'assets/sugercane.txt', lang: widget.lang);
                                 Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -84,7 +92,7 @@ class _HomeState extends State<Home> {
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
                               onTap: () {
-                                DataM data=DataM(plant: 'Corn', image: 'assets/corn.jpg', model: 'assets/corn.tflite', lable: 'assets/corn.txt');
+                                DataM data=DataM(plant: 'Corn', image: 'assets/corn.jpg', model: 'assets/corn.tflite', lable: 'assets/corn.txt', lang: widget.lang);
                                 Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -102,7 +110,7 @@ class _HomeState extends State<Home> {
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
                               onTap: () {
-                                DataM data=DataM(plant: 'Potato', image: 'assets/potato.jpg', model: 'assets/potato.tflite', lable: 'assets/potato.txt');
+                                DataM data=DataM(plant: 'Potato', image: 'assets/potato.jpg', model: 'assets/potato.tflite', lable: 'assets/potato.txt', lang: widget.lang);
                                 Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -120,7 +128,7 @@ class _HomeState extends State<Home> {
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
                               onTap: () {
-                                DataM data=DataM(plant: 'Soya', image: 'assets/soya.jpg', model: 'assets/soya.tflite', lable: 'assets/soya.txt');
+                                DataM data=DataM(plant: 'Soya', image: 'assets/soya.jpg', model: 'assets/soya.tflite', lable: 'assets/soya.txt', lang: widget.lang);
                                 Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -146,7 +154,7 @@ class _HomeState extends State<Home> {
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
                               onTap: () {
-                                DataM data=DataM(plant: 'apple', image: 'assets/apple.jpg', model: 'assets/apple.tflite', lable: 'assets/apple.txt');
+                                DataM data=DataM(plant: 'apple', image: 'assets/apple.jpg', model: 'assets/apple.tflite', lable: 'assets/apple.txt', lang: widget.lang);
                                 Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -164,7 +172,7 @@ class _HomeState extends State<Home> {
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
                               onTap: () {
-                                DataM data=DataM(plant: 'grapes', image: 'assets/grapes.jpg', model: 'assets/grapes.tflite', lable: 'assets/grapes.txt');
+                                DataM data=DataM(plant: 'grapes', image: 'assets/grapes.jpg', model: 'assets/grapes.tflite', lable: 'assets/grapes.txt', lang: widget.lang);
                                 Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -181,11 +189,18 @@ class _HomeState extends State<Home> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                DataM data=DataM(plant: 'casavva', image: 'assets/casavva.jpg', model: 'assets/casavva.tflite', lable: 'assets/casavva.txt', lang: widget.lang);
+                                Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => predictionScreen(data: data,)));
+                              
+                              },
                               child: const CircleAvatar(
                                 radius: 35,
                                 backgroundImage: AssetImage(
-                                  'assets/orange.jpeg',
+                                  'assets/casavva.jpg',
                                 ),
                               ),
                             ),
@@ -194,7 +209,7 @@ class _HomeState extends State<Home> {
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
                               onTap: () {
-                                DataM data=DataM(plant: 'tomato', image: 'assets/tomato.jpg', model: 'assets/tomato.tflite', lable: 'assets/tomato.txt');
+                                DataM data=DataM(plant: 'tomato', image: 'assets/tomato.jpg', model: 'assets/tomato.tflite', lable: 'assets/tomato.txt', lang: widget.lang);
                                 Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -220,7 +235,7 @@ class _HomeState extends State<Home> {
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
                               onTap: () {
-                                 DataM data=DataM(plant: 'rice', image: 'assets/rice.jpg', model: 'assets/rice.tflite', lable: 'assets/rice.txt');
+                                 DataM data=DataM(plant: 'rice', image: 'assets/rice.jpg', model: 'assets/rice.tflite', lable: 'assets/rice.txt', lang: widget.lang);
                                 Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -238,7 +253,7 @@ class _HomeState extends State<Home> {
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
                               onTap: () {
-                                DataM data=DataM(plant: 'wheat', image: 'assets/weet.jpg', model: 'assets/wheat.tflite', lable: 'assets/wheat.txt');
+                                DataM data=DataM(plant: 'wheat', image: 'assets/weet.jpg', model: 'assets/wheat.tflite', lable: 'assets/wheat.txt', lang: widget.lang);
                                 Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -270,12 +285,18 @@ class _HomeState extends State<Home> {
                   ),
                   child: Column(children: [
                     Row(
-                      children: const [
+                      children:  [
                         Padding(
                           padding: EdgeInsets.all(16.0),
-                          child: Text(
+                          child: widget.lang=="English"?Text(
                             "Treat your Crop",
                             style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ):Text(
+                            "प्रक्रिया खालीलप्रमाणे",
+                            style: DevanagariFonts.hind(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
                             ),

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:agroscan/Screens/HomePage.dart';
 import 'package:agroscan/Screens/LoginScreen.dart';
+import 'package:agroscan/Screens/lang.dart';
 import 'package:agroscan/firebase.dart';
 
 import 'package:flutter/material.dart';
@@ -192,7 +193,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 if (_success != false) {
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
-                                          builder: (context) => Home()),
+                                          builder: (context) => Lang()),
                                       (Route<dynamic> route) => false);
                                 }
                               },
