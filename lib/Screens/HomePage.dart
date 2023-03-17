@@ -209,7 +209,7 @@ class _HomeState extends State<Home> {
                             padding: EdgeInsets.all(8.0),
                             child: InkWell(
                               onTap: () {
-                                DataM data=DataM(plant: 'tomato', image: 'assets/tomato.jpg', model: 'assets/tomato.tflite', lable: 'assets/tomato.txt', lang: widget.lang);
+                                DataM data=DataM(plant: 'tomato', image: 'assets/tomato.jpg', model: 'assets/Tomato1.tflite', lable: 'assets/Tomato1.txt', lang: widget.lang);
                                 Navigator.push(
                                       context,
                                       MaterialPageRoute(

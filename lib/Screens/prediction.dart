@@ -74,7 +74,7 @@ class _predictionScreenState extends State<predictionScreen> {
       _pridiction = pridection!;
       label = _pridiction[0]["label"] != null
           ? _pridiction[0]["label"].toString().substring(2)
-          : "Retry";
+          : "seems like this Disease not in our database Please Contact local authorities";
       confidence = _pridiction[0]["confidence"] != null
           ? (_pridiction[0]["confidence"] * 100).toString().substring(0, 5)
           : 0;
@@ -229,7 +229,7 @@ class _predictionScreenState extends State<predictionScreen> {
                         .toString()
                         .substring(2)
                         .toUpperCase()
-                    : "Retry";
+                    : "seems like this Disease not in our database Please Contact local authorities";
                 print(predicted_Disease);
               },
               child: Card(
@@ -275,7 +275,7 @@ class _predictionScreenState extends State<predictionScreen> {
             load
                 ? Center(
                     child: Text(
-                      confidence.toString(),
+                      "Acc:-"+confidence.toString()+"%",
                       style: TextStyle(fontSize: 25),
                     ),
                   )
