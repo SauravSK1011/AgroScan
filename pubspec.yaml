@@ -47,6 +47,7 @@ dependencies:
   tflite: ^1.1.2
   webview_flutter: 2.0.12
   google_language_fonts: ^2.0.0
+  translator: ^0.1.7
 
 dev_dependencies:
   flutter_test:

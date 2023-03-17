@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:translator/translator.dart';
 
 import 'package:agroscan/Screens/ResultScreen.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,21 @@ class predictionScreen extends StatefulWidget {
 }
 
 class _predictionScreenState extends State<predictionScreen> {
+  var ans;
   @override
   void initState() {
     super.initState();
     loadmodal();
+  }
+
+  translate(String input) async {
+    final translator = GoogleTranslator();
+    ans =  await translator.translate(input, from: 'en', to: 'mr');
+    print("ans is ");
+    print(ans);
+    setState(() {
+      load = true;
+    });
   }
 
   final imagepicker = ImagePicker();
@@ -66,8 +78,7 @@ class _predictionScreenState extends State<predictionScreen> {
       confidence = _pridiction[0]["confidence"] != null
           ? (_pridiction[0]["confidence"] * 100).toString().substring(0, 5)
           : 0;
-      load = true;
-      load = true;
+      translate(label);
     });
   }
 
@@ -247,10 +258,18 @@ class _predictionScreenState extends State<predictionScreen> {
             ),
             load
                 ? Center(
-                    child: Text(
-                      label,
-                      style: TextStyle(fontSize: 25),
-                    ),
+                    child: widget.data.lang == 'English'
+                        ? Text(
+                            label,
+                            style: TextStyle(fontSize: 25),
+                          )
+                        : Text(
+                            ans.toString(),
+                            style: DevanagariFonts.hind(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   )
                 : Text(""),
             load
@@ -273,6 +292,7 @@ class _predictionScreenState extends State<predictionScreen> {
                               confidence: confidence,
                               result: label,
                               image: _imagefile,
+                              lang: widget.data.lang, nameinM: ans.toString(),
                             )));
               },
               child: Card(
